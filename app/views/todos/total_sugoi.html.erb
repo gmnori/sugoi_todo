@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cleared Sugoi Works</h1>
+
+<h3>Your Total Sugoi Point: <%= Todo.where(clear: 1).all.sum(:point) %></h3>
+<div><%= link_to 'Future Sugoi List', todos_path %></div>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>やったこと！</th>
+      <th>すごいポイント</th>
+      <th>達成日</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @todos.present? %>
+    <% @todos.each do |todo| %>
+      <tr>
+        <td><%= todo.task %></td>
+        <td><%= todo.point %></td>
+        <td><%= todo.duedate %></td>
+        
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Todo', new_todo_path %>

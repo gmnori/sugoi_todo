@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sugoi Todos</h1>
+
+<h3>Your Total Sugoi Point: <%= Todo.where(clear: 1).all.sum(:point) %></h3>
+<div><%= link_to 'Cleared Sugoi Works!', "todos/total_sugoi" %></div>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>やること！</th>
+      <th>すごいポイント</th>
+      <th>いつまで？</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @todos.present? %>
+    <% @todos.each do |todo| %>
+      <tr>
+        <td><%= todo.task %></td>
+        <td><%= todo.point %></td>
+        <td><%= todo.duedate %></td>
+        <td><%= link_to '達成！', todos_clear_path(todo.id) %></td>
+        <td><%= link_to '削除', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Todo', new_todo_path %>

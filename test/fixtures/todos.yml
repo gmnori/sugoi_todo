@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task: MyText
+  point: 1
+  duedate: 2019-10-08
+
+two:
+  task: MyText
+  point: 1
+  duedate: 2019-10-08
